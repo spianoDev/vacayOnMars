@@ -21,7 +21,7 @@ import Home from "./Home"
                     <Link to="/">Home</Link>
                 </nav>
                 <main>
-                    <h1>Hello Mars!</h1>
+                    <h1>Hello From Mars!</h1>
                         <Switch>
                             <Route path="/" render={(routeProps) => (<Home {...routeProps} setAveTemp={this.setAveTemp}/>)}/>
                         </Switch>

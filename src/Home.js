@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import {Link } from "react-router-dom";
+
 import axios from "axios";
 
 const nasaURL = "https://api.nasa.gov/insight_weather/?api_key=ho6badIV7YVgrC00fo24mrl3juolIdryv8DPQsDc&feedtype=json&ver=1.0";
@@ -8,7 +10,7 @@ export default class Home extends Component {
         super()
         this.state={
             aveTemps:[]
-        }
+       }
     }
     componentDidMount() {
         // const averageTemp = this.props.match.params.AT;
@@ -20,10 +22,12 @@ export default class Home extends Component {
         .then(response => {
             // console.log(response.data);
         let aveTemps = [];
+
         
         for (let datum in response.data) {
             if (response.data[datum].AT !== undefined) {
                 aveTemps.push(response.data[datum].AT.av)
+
                 console.log(aveTemps);
             }
             
@@ -54,14 +58,16 @@ export default class Home extends Component {
             return (
                 <div key={avTemp}>
                     <ul>
-                        <li>{avTemp}</li>
+                     <Link to="/" ><li>{avTemp} &deg;C</li></Link>  
                         </ul>
                 </div>
                 );
             });
                 return(
                 <div>
+                    <h2>Here are the average daily temperatures from the past week.</h2>
                  {weather}
+                 
                 </div>
                 )};
 }
