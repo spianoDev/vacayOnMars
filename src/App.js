@@ -7,6 +7,7 @@ import Home from "./Home"
         super(props);
         this.state = {
             av: null
+
         };
         this.setAveTemp = this.setAveTemp.bind(this);
     }
@@ -22,7 +23,7 @@ import Home from "./Home"
                 <main>
                     <h1>Hello Mars!</h1>
                         <Switch>
-                            <Route path="/" component={Home} />
+                            <Route path="/" render={(routeProps) => (<Home {...routeProps} setAveTemp={this.setAveTemp}/>)}/>
                         </Switch>
                 </main>
             </div>
