@@ -7,7 +7,7 @@ export default class Home extends Component {
     constructor(){
         super()
         this.state={
-            weather:[]
+            aveTemps:[]
         }
     }
     componentDidMount() {
@@ -16,35 +16,52 @@ export default class Home extends Component {
         const url = `${nasaURL}.json`;
 
         axios
-            .get(url)
-            .then(response => {
-                console.log(response.data);
-               
-                let newAveTemp=Object.values(response.data);
-            //    console.log(newAveTemp[0].AT.av)
-                let weather = newAveTemp.map(avTemp => {
-                    // console.log(avTemp);
-                    this.setState({
-                        weather:avTemp
-                    })
+        .get(url)
+        .then(response => {
+            // console.log(response.data);
+        let aveTemps = [];
+        
+        for (let datum in response.data) {
+            if (response.data[datum].AT !== undefined) {
+                aveTemps.push(response.data[datum].AT.av)
+                console.log(aveTemps);
+            }
+            
+        } 
+              this.setState({
+                    aveTemps: aveTemps
                 })
+            // let newAveTemp=Object.values(response.data);
+        //    console.log(newAveTemp[0].AT.av)
+            // let weather = newAveTemp.map(avTemp => {
+            //     // console.log(avTemp);
+            //     this.setState({
+            //         weather:avTemp
+            //     })
+            // })
 
-                // console.log(this.state.weather) 
-            })
-            .catch(err => {
-                console.error(err);
-            });
+            // console.log(this.state.weather) 
+        })
+        .catch(err => {
+            console.error(err);
+        });
     }
 
 
     render() {
         // console.log(this.state.weather)
-        // let weather = newAveTemp.map(avTemp => {
-        return (
-                <div key >
-                  {this.weather}
-                        </div>
-           );
-         // })
-       }
+        let weather = this.state.aveTemps.map(avTemp => {
+            return (
+                <div key={avTemp.av}>
+                    <li>{avTemp}</li>
+                </div>
+                );
+            });
+                return(
+                <div>
+                    <ul>
+                         <li>{weather}</li>
+                    </ul>
+                </div>
+                )};
 }
