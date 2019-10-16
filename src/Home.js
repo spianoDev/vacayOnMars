@@ -7,7 +7,7 @@ const nasaURL = "https://api.nasa.gov/insight_weather/?api_key=ho6badIV7YVgrC00f
 
 export default class Home extends Component {
     constructor(){
-        super()
+        super();
         this.state={
             aveTemps:[]
        }
@@ -26,7 +26,7 @@ export default class Home extends Component {
         
         for (let datum in response.data) {
             if (response.data[datum].AT !== undefined) {
-                aveTemps.push(response.data[datum].AT.av)
+                aveTemps.push(response.data[datum].AT.av);
 
                 console.log(aveTemps);
             }
