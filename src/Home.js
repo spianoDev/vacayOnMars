@@ -52,16 +52,16 @@ export default class Home extends Component {
         // console.log(this.state.weather)
         let weather = this.state.aveTemps.map(avTemp => {
             return (
-                <div key={avTemp.av}>
-                    <li>{avTemp}</li>
+                <div key={avTemp}>
+                    <ul>
+                        <li>{avTemp}</li>
+                        </ul>
                 </div>
                 );
             });
                 return(
                 <div>
-                    <ul>
-                         <li>{weather}</li>
-                    </ul>
+                 {weather}
                 </div>
                 )};
 }
