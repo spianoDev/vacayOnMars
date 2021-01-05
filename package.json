@@ -19,7 +19,7 @@
   "author": "Sarah Panaligan, Melaina Valentine, Shamira Jones",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.15.3",
+    "axios": "^0.21.1",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-router": "^5.1.2",
